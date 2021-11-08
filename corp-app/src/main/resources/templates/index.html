@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+   <link rel="stylesheet" type="text/css" th:href="@{/css/core.css}" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col" layout:fragment="content">
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome to our Corp App!</h1>
+                <hr class="my-4">
+                <p class="lead">Please, login to continue</p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="/user" role="button">Login as User</a>
+                    <a class="btn btn-primary btn-lg" href="/admin" role="button">Login as Admin</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
