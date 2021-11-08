@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/core.css}"/>
 </head>
 <body>
-    <p>Logout success <a href="/user">Login</a> </p>
+<div class="col" layout:fragment="content">
+    <div class="jumbotron">
+        <h1 class="display-4">Logout success. Looking for you back!</h1>
+        <a class="btn btn-primary btn-lg" href="/" role="button">Login</a>
+    </div>
+</div>
 </body>
 </html>

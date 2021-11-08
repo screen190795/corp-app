@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/core.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/tiles.css}"/>
+    <link th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+
 </head>
 <body>
+<div class="col" layout:fragment="content">
+    <h1 class="display-4">staffMain</h1>
+    <h4>Hello, <span th:text="${user}"></span>. You are connected as staff </h4>
+    <a class="btn btn-primary btn-lg" href="/logout">logout</a>
 
+    <div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="col-md-12">
+                <h1><strong>Панель управления</strong></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="http://www.ubh.com">
+                <div class="tile purple">
+                    <h3 class="title">Управление инцидентами</h3>
+                </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <div class="tile red">
+                    <h3 class="title">Сообщения</h3>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <a href="http://www.ubh.com">
+                <div class="tile orange">
+                    <h3 class="title">Справка</h3>
+                </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="http://www.ubh.com">
+                <div class="tile green">
+                    <h3 class="title">Чат</h3>
+                </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="http://www.ubh.com">
+                <div class="tile blue">
+                    <h3 class="title">Настройки профиля</h3>
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
