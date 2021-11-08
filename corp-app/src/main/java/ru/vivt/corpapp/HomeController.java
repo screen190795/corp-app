@@ -1,14 +1,12 @@
 package ru.vivt.corpapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import ru.vivt.corpapp.models.MyUserDetails;
 import ru.vivt.corpapp.repositories.UserRepository;
 
@@ -23,20 +21,31 @@ public class HomeController {
     }
 
 
-    @RequestMapping(value = { "/user" }, method = RequestMethod.GET)
-    public String user(@AuthenticationPrincipal MyUserDetails user, Model model){
-        System.out.println(user.getUsername() + " : " + user.getPassword());
-        model.addAttribute("user",user.getUsername());
-        return "home";
+    @RequestMapping(value = {"/admin"}, method = RequestMethod.GET)
+    public String admin(@AuthenticationPrincipal MyUserDetails user, Model model) {
+        model.addAttribute("user", user.getUsername());
+        return "adminMain";
     }
 
-    @GetMapping("/admin")
-    public String admin(){
-        return "home";
+    @GetMapping("/user")
+    public String user(@AuthenticationPrincipal MyUserDetails user, Model model) {
+        model.addAttribute("user", user.getUsername());
+        return "userMain";
     }
 
-    @RequestMapping(value = "/logout-success", produces = MediaType.TEXT_HTML_VALUE)
-    public String logout(){
+    @GetMapping("/staff")
+    public String staff(@AuthenticationPrincipal MyUserDetails user, Model model) {
+        model.addAttribute("user", user.getUsername());
+        return "staffMain";
+    }
+
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
+
+    @RequestMapping(value = "/logout-success")
+    public String logout() {
         return "logout";
     }
 
