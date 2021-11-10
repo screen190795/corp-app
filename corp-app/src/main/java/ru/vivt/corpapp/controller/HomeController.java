@@ -1,4 +1,4 @@
-package ru.vivt.corpapp;
+package ru.vivt.corpapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -7,8 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ru.vivt.corpapp.models.MyUserDetails;
-import ru.vivt.corpapp.repositories.UserRepository;
+import ru.vivt.corpapp.entity.MyUserDetails;
+import ru.vivt.corpapp.repository.UserRepository;
 
 @Controller
 public class HomeController {

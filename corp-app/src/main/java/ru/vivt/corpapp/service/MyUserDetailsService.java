@@ -1,13 +1,13 @@
-package ru.vivt.corpapp;
+package ru.vivt.corpapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import ru.vivt.corpapp.models.MyUserDetails;
-import ru.vivt.corpapp.models.User;
-import ru.vivt.corpapp.repositories.UserRepository;
+import ru.vivt.corpapp.entity.MyUserDetails;
+import ru.vivt.corpapp.entity.User;
+import ru.vivt.corpapp.repository.UserRepository;
 
 import java.util.Optional;
 

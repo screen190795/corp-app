@@ -1,4 +1,4 @@
-package ru.vivt.corpapp.models;
+package ru.vivt.corpapp.entity;
 
 import javax.persistence.*;
 

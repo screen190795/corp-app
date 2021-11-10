@@ -1,4 +1,4 @@
-package ru.vivt.corpapp;
+package ru.vivt.corpapp.configurations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
