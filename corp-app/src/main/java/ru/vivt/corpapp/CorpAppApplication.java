@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import ru.vivt.corpapp.repositories.UserRepository;
+import ru.vivt.corpapp.repository.UserRepository;
 
 @SpringBootApplication
 @ComponentScan
