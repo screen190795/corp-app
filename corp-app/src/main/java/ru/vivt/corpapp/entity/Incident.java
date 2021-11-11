@@ -1,6 +1,9 @@
 package ru.vivt.corpapp.entity;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
+import java.lang.reflect.Field;
 
 @Table(name = "incident")
 @Entity
@@ -70,4 +73,42 @@ public class Incident {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Incident(Integer id, String title, Priority priority, Reporter reporter, @Nullable Staff assignee, Status status, String comment) {
+        this.id = id;
+        this.title = title;
+        this.priority = priority;
+        this.reporter = reporter;
+        this.assignee = assignee;
+        this.status = status;
+        this.comment = comment;
+    }
+
+    public boolean checkNull() throws IllegalAccessException {
+        for (Field f : getClass().getDeclaredFields())
+            if (f.get(this) != null)
+                return false;
+        return true;
+    }
+
+    public Incident() {
+
+    }
+
 }
