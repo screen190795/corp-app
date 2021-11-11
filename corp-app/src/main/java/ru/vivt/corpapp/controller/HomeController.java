@@ -39,12 +39,6 @@ public class HomeController {
         return "staffMain";
     }
 
-    @GetMapping("/staff/incidents")
-    public String manageIncidents(@AuthenticationPrincipal MyUserDetails user, Model model) {
-        model.addAttribute("user", user.getUsername());
-        return "incidents";
-    }
-
     @GetMapping("/")
     public String index() {
         return "index";
