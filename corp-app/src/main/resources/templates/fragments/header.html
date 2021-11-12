@@ -1,22 +1,21 @@
 <div th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" >
-    <a class="navbar-brand" href="#">RBorodin Tech Sup</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-    </div>
-
-
-
-  </nav>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">RBorodin Tech Sup</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/homepage">Главная <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+    Вы вошли как <span th:text="${user}"></span>, роль: <span th:text="${role}"></span>
+    </span>
+        <span class="nav-item active">
+            <a class="nav-link" href="/logout"> Выйти <span class="sr-only">(current)</span></a>
+    </span>
+      </div>
+    </nav>
 </div>

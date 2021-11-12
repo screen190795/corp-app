@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/layout}">
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
@@ -27,8 +28,8 @@
             <th>Статус</th>
             <th>Заявитель</th>
             <th>Исполнитель</th>
-            <th>Редактировать</th>
-            <th>Удалить</th>
+            <th sec:authorize="hasAuthority('STAFF') ">Взять в работу</th>
+            <th sec:authorize="hasAuthority('ADMIN')">Удалить</th>
         </tr>
         </thead>
         <tbody>
