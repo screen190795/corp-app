@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/staff/incidents")
+@RequestMapping("/homepage/incidents")
 public class IncidentController {
 
     private final IncidentService incidentService;
