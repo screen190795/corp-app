@@ -21,22 +21,11 @@ public class HomeController {
     }
 
 
-    @RequestMapping(value = {"/admin"}, method = RequestMethod.GET)
-    public String admin(@AuthenticationPrincipal MyUserDetails user, Model model) {
+    @RequestMapping(value = {"/homepage"}, method = RequestMethod.GET)
+    public String login(@AuthenticationPrincipal MyUserDetails user, Model model) {
         model.addAttribute("user", user.getUsername());
-        return "adminMain";
-    }
-
-    @GetMapping("/user")
-    public String user(@AuthenticationPrincipal MyUserDetails user, Model model) {
-        model.addAttribute("user", user.getUsername());
-        return "userMain";
-    }
-
-    @GetMapping("/staff")
-    public String staff(@AuthenticationPrincipal MyUserDetails user, Model model) {
-        model.addAttribute("user", user.getUsername());
-        return "staffMain";
+        model.addAttribute("role", user.getAuthorities());
+        return "homepage";
     }
 
     @GetMapping("/")
