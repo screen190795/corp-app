@@ -12,6 +12,12 @@ public class Staff {
     @Column(name = "fio")
     private String fio;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone")
+    private String phone;
+
     @ManyToOne
     @JoinColumn(name = "manager_id")
     private Manager manager;
@@ -50,5 +56,11 @@ public class Staff {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return fio +
+                "\nэл.почта: " + email;
     }
 }

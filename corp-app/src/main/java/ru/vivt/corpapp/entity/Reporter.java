@@ -65,7 +65,7 @@ public class Reporter {
     @Override
     public String toString() {
         return fio +
-                ", эл.почта: " + email +
-                ", телефон: " + phone;
+                "\nэл.почта: " + email +
+                "\nтелефон: " + phone;
     }
 }
