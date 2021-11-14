@@ -126,5 +126,9 @@ public class IncidentServiceImpl implements IncidentService {
         return incidentRepository.save(incidentFromDb);
     }
 
+    @Override
+    public long getIncidentsCount(Map<String, String> params) {
+        return getIncidentsList(params).getTotalElements();
+    }
 
 }
