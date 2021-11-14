@@ -11,8 +11,8 @@ import java.util.Optional;
 public interface IncidentService {
     Page<Incident> getIncidentsList(Map<String, String> params);
 
-//    long getIncidentsCount(Map<String, String> params);
-//
+    long getIncidentsCount(Map<String, String> params);
+
     Incident createIncident(Incident incident);
 
     Incident updateIncident(Incident incidentFromDB, Incident updatedIncident) throws EntityInsertException;
