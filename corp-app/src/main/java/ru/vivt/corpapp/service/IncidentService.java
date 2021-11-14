@@ -13,11 +13,11 @@ public interface IncidentService {
 
 //    long getIncidentsCount(Map<String, String> params);
 //
-//    Incident createIncident(Incident incident);
-//
-//    Incident updateIncident(Incident incidentFromDB, Incident updatedIncident) throws EntityInsertException;
-//
-//    void deleteIncident(Long incident);
-//
-//    Optional<Incident> getIncident(Long id);
+    Incident createIncident(Incident incident);
+
+    Incident updateIncident(Incident incidentFromDB, Incident updatedIncident) throws EntityInsertException;
+
+    void deleteIncident(Long id);
+
+    Optional<Incident> getIncident(Long id);
 }

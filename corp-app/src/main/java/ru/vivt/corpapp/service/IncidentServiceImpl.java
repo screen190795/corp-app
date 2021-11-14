@@ -86,65 +86,45 @@ public class IncidentServiceImpl implements IncidentService {
                         .and(commentContains(params.get("comment"))), page);
     }
 
+    @Override
+    public Incident createIncident(Incident incident) {
+        return incidentRepository.save(incident);
+    }
 
-//    @Override
-//    public Incident createIncident(Incident Incident) {
-//        Incident.setLevel(Incident.countLevel(Incident.getExperience()));
-//        Incident.setUntilNextLevel(Incident.countUntilLevel(Incident.getExperience(), Incident.getLevel()));
-//        if (Incident.getBanned() == null) {
-//            Incident.setBanned(false);
-//        }
-//        return IncidentRepository.save(Incident);
-//    }
+    @Override
+    public void deleteIncident(Long id) {
+        incidentRepository.deleteById(id);
+    }
 
-//    @Override
-//    public Incident updateIncident(Incident IncidentFromDb, Incident updatedIncident) throws EntityInsertException {
-//        if (IncidentFromDb.getName() != null && updatedIncident.getName() != null) {
-//            if (!IncidentValidator.nameIsValid(updatedIncident.getName())) {
-//                throw new EntityInsertException();
-//            }
-//            IncidentFromDb.setName(updatedIncident.getName());
-//        }
-//        if (IncidentFromDb.getTitle() != null && updatedIncident.getTitle() != null) {
-//            if (!IncidentValidator.titleIsValid(updatedIncident.getTitle())) {
-//                throw new EntityInsertException();
-//            }
-//            IncidentFromDb.setTitle(updatedIncident.getTitle());
-//        }
-//        if (IncidentFromDb.getRace() != null && updatedIncident.getRace() != null) {
-//            IncidentFromDb.setRace(updatedIncident.getRace());
-//        }
-//        if (IncidentFromDb.getProfession() != null && updatedIncident.getProfession() != null) {
-//            IncidentFromDb.setProfession(updatedIncident.getProfession());
-//        }
-//        if (IncidentFromDb.getBirthday() != null && updatedIncident.getBirthday() != null) {
-//            if (!IncidentValidator.birthDayIsValid(updatedIncident.getBirthday().getTime())) {
-//                throw new EntityInsertException();
-//            }
-//            IncidentFromDb.setBirthday(updatedIncident.getBirthday());
-//        }
-//        if (IncidentFromDb.getBanned() != null && updatedIncident.getBanned() != null) {
-//            IncidentFromDb.setBanned(updatedIncident.getBanned());
-//        }
-//        if (IncidentFromDb.getExperience() != null && updatedIncident.getExperience() != null) {
-//            if (!IncidentValidator.experienceIsValid(updatedIncident.getExperience())) {
-//                throw new EntityInsertException();
-//            }
-//            IncidentFromDb.setExperience(updatedIncident.getExperience());
-//            IncidentFromDb.setLevel(Incident.countLevel(IncidentFromDb.getExperience()));
-//            IncidentFromDb.setUntilNextLevel((Incident.countUntilLevel(IncidentFromDb.getExperience(), IncidentFromDb.getLevel())));
-//
-//        }
-//        if (IncidentFromDb.getUntilNextLevel() != null && updatedIncident.getUntilNextLevel() != null) {
-//            IncidentFromDb.setUntilNextLevel(updatedIncident.getUntilNextLevel());
-//        }
-//        return IncidentRepository.save(IncidentFromDb);
-//    }
-//
-//    @Override
-//    public void deleteIncident(Long id) {
-//        IncidentRepository.deleteById(id);
-//    }
+    @Override
+    public Optional<Incident> getIncident(Long id) {
+        return incidentRepository.findById(id);
+    }
+
+    @Override
+    public Incident updateIncident(Incident incidentFromDb, Incident updatedIncident) throws EntityInsertException {
+        if (incidentFromDb.getTitle() != null && updatedIncident.getTitle() != null) {
+            incidentFromDb.setTitle(updatedIncident.getTitle());
+        }
+
+        if (updatedIncident.getPriority() != null) {
+            incidentFromDb.setPriority(updatedIncident.getPriority());
+        }
+
+        if (updatedIncident.getReporter() != null) {
+            incidentFromDb.setReporter(updatedIncident.getReporter());
+        }
+        if (updatedIncident.getAssignee() != null) {
+            incidentFromDb.setAssignee(updatedIncident.getAssignee());
+        }
+        if (updatedIncident.getStatus() != null) {
+            incidentFromDb.setStatus(updatedIncident.getStatus());
+        }
+        if (updatedIncident.getComment() != null) {
+            incidentFromDb.setComment(updatedIncident.getComment());
+        }
+        return incidentRepository.save(incidentFromDb);
+    }
 
 
 }
