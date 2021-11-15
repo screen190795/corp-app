@@ -33,6 +33,12 @@ public class HomeController {
         return "index";
     }
 
+
+    @GetMapping(value = "/createIncident")
+    public String createIncident() {
+        return "createIncident";
+    }
+
     @RequestMapping(value = "/logout-success")
     public String logout() {
         return "logout";
