@@ -1,5 +1,6 @@
 package ru.vivt.corpapp.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -7,9 +8,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.vivt.corpapp.controller.IncidentOrder;
 import ru.vivt.corpapp.entity.Incident;
-import ru.vivt.corpapp.exceptions.EntityInsertException;
+import ru.vivt.corpapp.entity.Status;
 import ru.vivt.corpapp.repository.IncidentRepository;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -17,7 +19,7 @@ import static ru.vivt.corpapp.specifications.IncidentSpecification.*;
 
 @Service
 public class IncidentServiceImpl implements IncidentService {
-
+    @Autowired
     final IncidentRepository incidentRepository;
 
     public IncidentServiceImpl(IncidentRepository incidentRepository) {
@@ -87,6 +89,11 @@ public class IncidentServiceImpl implements IncidentService {
     }
 
     @Override
+    public List<Incident> getIncidentsList() {
+        return incidentRepository.findAll();
+    }
+
+    @Override
     public Incident createIncident(Incident incident) {
         return incidentRepository.save(incident);
     }
@@ -97,12 +104,19 @@ public class IncidentServiceImpl implements IncidentService {
     }
 
     @Override
+    public Incident takeToJob(Long id) {
+        Incident updatedIncident = getIncident(id).orElseThrow(() -> new IllegalArgumentException("Invalid incident Id:" + id));
+        updatedIncident.setStatus(Status.IN_PROGRESS);
+        return incidentRepository.save(updatedIncident);
+    }
+
+    @Override
     public Optional<Incident> getIncident(Long id) {
         return incidentRepository.findById(id);
     }
 
     @Override
-    public Incident updateIncident(Incident incidentFromDb, Incident updatedIncident) throws EntityInsertException {
+    public Incident updateIncident(Incident incidentFromDb, Incident updatedIncident) {
         if (incidentFromDb.getTitle() != null && updatedIncident.getTitle() != null) {
             incidentFromDb.setTitle(updatedIncident.getTitle());
         }
