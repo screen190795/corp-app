@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/layout}">
 <head>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/core.css}"/>
-    <link th:href="@{/css/main.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
 <div class="col" layout:fragment="content">
@@ -25,8 +19,7 @@
             <th>Статус</th>
             <th>Заявитель</th>
             <th>Исполнитель</th>
-            <th sec:authorize="hasAuthority('STAFF') ">Взять в работу</th>
-            <th sec:authorize="hasAuthority('ADMIN')">Удалить</th>
+            <th>Комментарий</th>
         </tr>
         </thead>
         <tbody>
@@ -38,11 +31,21 @@
             <td th:text="${incident.reporter}"></td>
             <td th:text="${incident.assignee}"></td>
             <td th:text="${incident.comment}"></td>
-            <td><a th:href="@{/incidents/edit/{id}(id=${incident.id})}"
-                   class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-            <td><a
-                    th:href="@{/incidents/delete/{id}(id=${incident.id})}"
-                    class="btn btn-primary"><i class="fa fa-user-times ml-2"></i></a></td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Действия
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <form action="#" th:action="@{/homepage/incidents/takeToJob/{id}(id=${incident.id})}" method="POST">
+                        <button class="dropdown-item" type="submit">Взять в работу</button>
+                        </a>
+                        </form>
+
+                        <button class="dropdown-item" type="button">Установить статус</button>
+                    </div>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>
