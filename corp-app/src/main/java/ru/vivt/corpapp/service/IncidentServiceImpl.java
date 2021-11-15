@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.vivt.corpapp.controller.IncidentOrder;
 import ru.vivt.corpapp.entity.Incident;
+import ru.vivt.corpapp.entity.Reporter;
 import ru.vivt.corpapp.entity.Status;
 import ru.vivt.corpapp.repository.IncidentRepository;
 
@@ -94,7 +95,9 @@ public class IncidentServiceImpl implements IncidentService {
     }
 
     @Override
-    public Incident createIncident(Incident incident) {
+    public Incident createIncident(Incident incident, Reporter reporter) {
+        incident.setStatus(Status.OPEN);
+        incident.setReporter(reporter);
         return incidentRepository.save(incident);
     }
 
