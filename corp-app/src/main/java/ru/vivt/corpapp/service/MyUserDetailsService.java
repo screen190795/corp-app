@@ -25,6 +25,14 @@ public class MyUserDetailsService implements UserDetailsService {
 
         return user.map(MyUserDetails::new).get();
     }
+
+    public Optional<User> getUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> user = userRepository.findByUsername(username);
+
+        user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + username));
+
+        return user;
+    }
 }
 
 
