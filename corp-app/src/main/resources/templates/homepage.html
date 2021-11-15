@@ -15,43 +15,57 @@
         <div class="container bootstrap snippets bootdey">
             <div class="row">
                 <div class="col-sm-4" sec:authorize="hasAnyAuthority('STAFF','ADMIN')">
-                    <a href="/homepage/incidents">
+                    <a href="/homepage/createIncident">
                         <div class="tile purple">
                             <h3 class="title">Управление инцидентами</h3>
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4">
-                    <a href="http://www.ubh.com">
-                        <div class="tile red">
-                            <h3 class="title">Сообщения</h3>
+                <div class="col-sm-4" sec:authorize="hasAnyAuthority('USER')">
+                    <a href="/homepage/incidents">
+                        <div class="tile purple">
+                            <h3 class="title">Мои заявки</h3>
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4">
-                    <a href="http://www.ubh.com">
-                        <div class="tile orange">
-                            <h3 class="title">Справка</h3>
+                <div class="col-sm-4" sec:authorize="hasAnyAuthority('USER')">
+                    <a href="/homepage/createIncident">
+                        <div class="tile purple">
+                            <h3 class="title">Создать заявку</h3>
                         </div>
                     </a>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <a href="http://www.ubh.com">
-                        <div class="tile green">
-                            <h3 class="title">Чат</h3>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <a href="http://www.ubh.com">
-                        <div class="tile blue">
-                            <h3 class="title">Настройки профиля</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
+<!--                <div class="col-sm-4">-->
+<!--                    <a href="http://www.ubh.com">-->
+<!--                        <div class="tile red">-->
+<!--                            <h3 class="title">Сообщения</h3>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class="col-sm-4">-->
+<!--                    <a href="http://www.ubh.com">-->
+<!--                        <div class="tile orange">-->
+<!--                            <h3 class="title">Справка</h3>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                <div class="col-sm-4">-->
+<!--                    <a href="http://www.ubh.com">-->
+<!--                        <div class="tile green">-->
+<!--                            <h3 class="title">Чат</h3>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class="col-sm-4">-->
+<!--                    <a href="http://www.ubh.com">-->
+<!--                        <div class="tile blue">-->
+<!--                            <h3 class="title">Настройки профиля</h3>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 </body>

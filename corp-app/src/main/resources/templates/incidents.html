@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/layout}">
 <head>
 </head>
@@ -17,7 +18,7 @@
             <th>Тема</th>
             <th>Приоритет</th>
             <th>Статус</th>
-            <th>Заявитель</th>
+            <th sec:authorize="hasAnyAuthority('USER','ADMIN')">Заявитель</th>
             <th>Исполнитель</th>
             <th>Комментарий</th>
         </tr>
@@ -27,11 +28,11 @@
             <td th:text="${incident.id}"></td>
             <td th:text="${incident.title}"></td>
             <td th:text="${incident.priority}"></td>
-            <td th:text="${incident.status}"></td>
-            <td th:text="${incident.reporter}"></td>
+            <td th:text="${incident.status.displayName}"></td>
+            <td th:text="${incident.reporter}" sec:authorize="hasAnyAuthority('USER','ADMIN')"></td>
             <td th:text="${incident.assignee}"></td>
             <td th:text="${incident.comment}"></td>
-            <td>
+            <td sec:authorize="hasAnyAuthority('USER','ADMIN')">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Действия
@@ -41,8 +42,9 @@
                         <button class="dropdown-item" type="submit">Взять в работу</button>
                         </a>
                         </form>
-
+                        <a th:href="@{/homepage/incidents/setWorkFlow/{id}(id=${incident.id})}">
                         <button class="dropdown-item" type="button">Установить статус</button>
+                        </a>
                     </div>
                 </div>
             </td>
