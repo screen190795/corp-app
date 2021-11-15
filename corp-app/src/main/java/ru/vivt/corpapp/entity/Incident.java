@@ -10,7 +10,7 @@ import java.lang.reflect.Field;
 public class Incident {
     @Id
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "title")
     private String title;
@@ -66,11 +66,11 @@ public class Incident {
         this.title = title;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -90,7 +90,7 @@ public class Incident {
         this.status = status;
     }
 
-    public Incident(Integer id, String title, Priority priority, Reporter reporter, @Nullable Staff assignee, Status status, String comment) {
+    public Incident(Long id, String title, Priority priority, Reporter reporter, @Nullable Staff assignee, Status status, String comment) {
         this.id = id;
         this.title = title;
         this.priority = priority;
