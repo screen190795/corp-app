@@ -13,14 +13,20 @@
                     <form action="#"
                           th:action="@{/homepage/incidents/update/{id}(id=${incident.id})}"
                           th:object="${incident}" method="post">
-                        <div class="row">
-                            <select name="country" th:field="*{status}" placeholder="Статус заявки"
+                        <div class="form-group">
+                            <label for="status">Тема заявки</label>
+                            <select id="status" th:field="*{status}" placeholder="Статус заявки"
                                     class="form-control col-4 mb-4">
                                 <option th:each="status : ${T( ru.vivt.corpapp.entity.Status).values()}"
                                         th:value="${status}" th:text="${status.displayName}"></option>
                             </select>
-                            <input type="text" th:field="*{comment}" class="form-control col-4 mb-4"
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Тема заявки</label>
+                            <input id="comment" type="text" th:field="*{comment}" class="form-control col-4 mb-4"
                                    placeholder="Введите комментарий к инциденту"/>
+                        </div>
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary col-2">Сохранить</button>
                         </div>
                     </form>

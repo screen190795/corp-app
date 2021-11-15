@@ -18,7 +18,7 @@
             <th>Тема</th>
             <th>Приоритет</th>
             <th>Статус</th>
-            <th sec:authorize="hasAnyAuthority('USER','ADMIN')">Заявитель</th>
+            <th sec:authorize="hasAnyAuthority('STAFF','ADMIN')">Заявитель</th>
             <th>Исполнитель</th>
             <th>Комментарий</th>
         </tr>
@@ -27,12 +27,12 @@
         <tr th:each="incident : ${incidents}">
             <td th:text="${incident.id}"></td>
             <td th:text="${incident.title}"></td>
-            <td th:text="${incident.priority}"></td>
+            <td th:text="${incident.priority.displayName}"></td>
             <td th:text="${incident.status.displayName}"></td>
-            <td th:text="${incident.reporter}" sec:authorize="hasAnyAuthority('USER','ADMIN')"></td>
+            <td th:text="${incident.reporter}" sec:authorize="hasAnyAuthority('STAFF','ADMIN')"></td>
             <td th:text="${incident.assignee}"></td>
             <td th:text="${incident.comment}"></td>
-            <td sec:authorize="hasAnyAuthority('USER','ADMIN')">
+            <td sec:authorize="hasAnyAuthority('STAFF','ADMIN')">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Действия

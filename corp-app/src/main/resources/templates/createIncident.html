@@ -11,20 +11,29 @@
             <div class="card-body">
                 <div class="col-md-8">
                     <form action="#"
-                          th:action="@{/homepage/incidents/create)}"
+                          th:action="@{/homepage/incidents/create}"
                           th:object="${incident}" method="post">
-                        <input type="text" th:field="*{comment}" class="form-control col-4 mb-4"
-                        <input type="text" th:field="*{comment}" class="form-control col-4 mb-4"
-                               placeholder="Тема заявки"/>
-                        <select name="country" th:field="*{priority}" placeholder="Укажите приоритет заявки"
-                                class="form-control col-4 mb-4">
-                            <option th:each="status : ${T( ru.vivt.corpapp.entity.Status).values()}"
-                                    th:value="${status}" th:text="${status.displayName}"></option>
+                        <div class="form-group">
+                            <label for="title">Тема заявки</label>
+                            <input id="title" type="text" class="form-control col-8 mb-8" th:field="*{title}"
+                                   placeholder="Тема заявки"/>
+                        </div>
+                        <div class="form-group">
+                        <label for="priority">Приоритет</label>
+                        <select id="priority" th:field="*{priority}"
+                                class="form-control col-6 mb-6">
+                            <option th:each="priority : ${T( ru.vivt.corpapp.entity.Priority).values()}"
+                                    th:value="${priority}" th:text="${priority.displayName}"></option>
                         </select>
-                        <input type="text" th:field="*{comment}" class="form-control col-4 mb-4"
-                               placeholder="Опишите проблему"/>
-                        <input type="hidden" th:field="*{blogId}" id="blogId">
+                        </div>
+                        <!--                        <input type="text" th:field="*{comment}" class="form-control col-4 mb-4"-->
+                        <!--                               placeholder="Опишите проблему"/>-->
+                        <div class="form-group">
+                        <textarea class="form-control" th:field="*{comment}" placeholder="Подробности"></textarea>
+                        </div>
+                        <div class="form-group">
                         <button type="submit" class="btn btn-primary col-2">Отправить</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -33,3 +42,6 @@
 </div>
 </body>
 </html>
+
+
+
