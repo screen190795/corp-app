@@ -91,7 +91,7 @@ public class IncidentController {
 
     @PostMapping("/create")
     public String createIncident(@AuthenticationPrincipal MyUserDetails user, Incident incident, BindingResult result, Model model) {
-        User userReporter = (User) this.myUserDetailsService.loadUserByUsername(user.getUsername());
+        User userReporter = this.myUserDetailsService.getUserByUsername(user.getUsername()).orElseThrow(() -> new IllegalArgumentException("пользователь не найден"));
         Reporter reporter = this.reporterService.getReporterByUser(userReporter);
         this.incidentService.createIncident(incident,reporter);
         List<Incident> incidentsList = this.incidentService.getIncidentsList();
