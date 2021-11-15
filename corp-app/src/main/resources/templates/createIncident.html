@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}">
+<head>
+</head>
+<body>
+<div class="col" layout:fragment="content">
+    <div class="container my-5">
+        <h3>Создать заявку</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-8">
+                    <form action="#"
+                          th:action="@{/homepage/incidents/create)}"
+                          th:object="${incident}" method="post">
+                        <input type="text" th:field="*{comment}" class="form-control col-4 mb-4"
+                        <input type="text" th:field="*{comment}" class="form-control col-4 mb-4"
+                               placeholder="Тема заявки"/>
+                        <select name="country" th:field="*{priority}" placeholder="Укажите приоритет заявки"
+                                class="form-control col-4 mb-4">
+                            <option th:each="status : ${T( ru.vivt.corpapp.entity.Status).values()}"
+                                    th:value="${status}" th:text="${status.displayName}"></option>
+                        </select>
+                        <input type="text" th:field="*{comment}" class="form-control col-4 mb-4"
+                               placeholder="Опишите проблему"/>
+                        <input type="hidden" th:field="*{blogId}" id="blogId">
+                        <button type="submit" class="btn btn-primary col-2">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
