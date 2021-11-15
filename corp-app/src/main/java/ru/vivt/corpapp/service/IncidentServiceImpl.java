@@ -77,7 +77,7 @@ public class IncidentServiceImpl implements IncidentService {
         }
 
         if (!params.containsKey("comment")) {
-            params.put("race", null);
+            params.put("comment", null);
         }
 
         return this.incidentRepository.findAll(
