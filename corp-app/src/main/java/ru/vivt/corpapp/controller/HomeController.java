@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ru.vivt.corpapp.entity.Incident;
 import ru.vivt.corpapp.entity.MyUserDetails;
 import ru.vivt.corpapp.repository.UserRepository;
 
@@ -34,8 +35,9 @@ public class HomeController {
     }
 
 
-    @GetMapping(value = "/createIncident")
-    public String createIncident() {
+    @GetMapping(value = "/homepage/createIncident")
+    public String createIncident(Model model) {
+        model.addAttribute("incident", new Incident());
         return "createIncident";
     }
 
