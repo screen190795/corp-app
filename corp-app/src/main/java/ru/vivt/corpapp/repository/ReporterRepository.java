@@ -1,7 +1,12 @@
 package ru.vivt.corpapp.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.repository.CrudRepository;
 import ru.vivt.corpapp.entity.Reporter;
+import ru.vivt.corpapp.entity.User;
 
-public interface ReporterRepository extends JpaRepository<Reporter, Integer> {
+import java.util.List;
+
+public interface ReporterRepository extends CrudRepository<Reporter, Long>, JpaSpecificationExecutor<Reporter> {
+    List<Reporter> findByUser(User user);
 }
