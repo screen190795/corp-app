@@ -9,6 +9,7 @@ import java.lang.reflect.Field;
 @Entity
 public class Incident {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
