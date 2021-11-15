@@ -2,20 +2,23 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/core.css}"/>
-
+</head>
 </head>
 <body>
 <div th:replace="fragments/header :: header"> This header content is going to be replaced.</div>
 
 <div class="container">
     <div class="row">
-<!--        <div class="col-2" layout:fragment="sidebar">-->
-<!--            <h1>This is the layout's sidebar</h1>-->
-<!--            <p>This is the sidebar placeholder. This content will be replaced if the page-->
-<!--                using the layout also defines a layout:fragment="sidebar" segment.</p>-->
-<!--        </div>-->
+        <!--        <div class="col-2" layout:fragment="sidebar">-->
+        <!--            <h1>This is the layout's sidebar</h1>-->
+        <!--            <p>This is the sidebar placeholder. This content will be replaced if the page-->
+        <!--                using the layout also defines a layout:fragment="sidebar" segment.</p>-->
+        <!--        </div>-->
         <div class="col" layout:fragment="content">
             <h1>This is the Layout's main section</h1>
             <p>This is the main content placeholder. This content will be replaced if the page
@@ -23,9 +26,8 @@
         </div>
     </div>
 </div>
-
+</body>
 <footer th:insert="fragments/footer :: footer" class="footer">
     This content will remain, but other content will be inserted after it.
 </footer>
-</body>
 </html>
