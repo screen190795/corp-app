@@ -19,7 +19,7 @@
             <th>Приоритет</th>
             <th>Статус</th>
             <th sec:authorize="hasAnyAuthority('STAFF','ADMIN')">Заявитель</th>
-            <th>Исполнитель</th>
+            <th sec:authorize="hasAnyAuthority('STAFF','ADMIN')">Исполнитель</th>
             <th>Комментарий</th>
         </tr>
         </thead>
@@ -30,7 +30,7 @@
             <td th:text="${incident.priority.displayName}"></td>
             <td th:text="${incident.status.displayName}"></td>
             <td th:text="${incident.reporter}" sec:authorize="hasAnyAuthority('STAFF','ADMIN')"></td>
-            <td th:text="${incident.assignee}"></td>
+            <td th:text="${incident.assignee}" sec:authorize="hasAnyAuthority('STAFF','ADMIN')"></td>
             <td th:text="${incident.comment}"></td>
             <td sec:authorize="hasAnyAuthority('STAFF','ADMIN')">
                 <div class="dropdown">
