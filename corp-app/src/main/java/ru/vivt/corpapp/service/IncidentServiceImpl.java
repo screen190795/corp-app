@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import ru.vivt.corpapp.controller.IncidentOrder;
 import ru.vivt.corpapp.entity.Incident;
 import ru.vivt.corpapp.entity.Reporter;
+import ru.vivt.corpapp.entity.Staff;
 import ru.vivt.corpapp.entity.Status;
 import ru.vivt.corpapp.repository.IncidentRepository;
 
@@ -107,9 +108,10 @@ public class IncidentServiceImpl implements IncidentService {
     }
 
     @Override
-    public Incident takeToJob(Long id) {
+    public Incident takeToJob(Long id, Staff staff) {
         Incident updatedIncident = getIncident(id).orElseThrow(() -> new IllegalArgumentException("Invalid incident Id:" + id));
         updatedIncident.setStatus(Status.IN_PROGRESS);
+        updatedIncident.setAssignee(staff);
         return incidentRepository.save(updatedIncident);
     }
 
