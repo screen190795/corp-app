@@ -3,6 +3,7 @@ package ru.vivt.corpapp.service;
 import org.springframework.data.domain.Page;
 import ru.vivt.corpapp.entity.Incident;
 import ru.vivt.corpapp.entity.Reporter;
+import ru.vivt.corpapp.entity.Staff;
 import ru.vivt.corpapp.exceptions.EntityInsertException;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public interface IncidentService {
 
     void deleteIncident(Long id);
 
-    Incident takeToJob(Long id);
+    Incident takeToJob(Long id, Staff staff);
 
     Optional<Incident> getIncident(Long id);
 }
