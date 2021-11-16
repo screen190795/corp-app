@@ -9,14 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.vivt.corpapp.entity.Incident;
-import ru.vivt.corpapp.entity.MyUserDetails;
-import ru.vivt.corpapp.entity.Reporter;
-import ru.vivt.corpapp.entity.User;
+import ru.vivt.corpapp.entity.*;
 import ru.vivt.corpapp.exceptions.EntityInsertException;
 import ru.vivt.corpapp.service.IncidentService;
 import ru.vivt.corpapp.service.MyUserDetailsService;
 import ru.vivt.corpapp.service.ReporterService;
+import ru.vivt.corpapp.service.StaffService;
 
 import java.util.List;
 import java.util.Map;
@@ -26,13 +24,15 @@ import java.util.Map;
 public class IncidentController {
     private final IncidentService incidentService;
     private final ReporterService reporterService;
+    private final StaffService staffService;
     private final MyUserDetailsService myUserDetailsService;
 
 
     @Autowired
-    public IncidentController(IncidentService incidentService, ReporterService reporterService, MyUserDetailsService myUserDetailsService) {
+    public IncidentController(IncidentService incidentService, ReporterService reporterService, StaffService staffService, MyUserDetailsService myUserDetailsService) {
         this.incidentService = incidentService;
         this.reporterService = reporterService;
+        this.staffService = staffService;
         this.myUserDetailsService = myUserDetailsService;
 
     }
@@ -60,9 +60,10 @@ public class IncidentController {
     }
 
     @PostMapping(value = "/takeToJob/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public String takeToJob(@PathVariable(value = "id") Long id, Model model) {
-        this.incidentService.takeToJob(id);
+    public String takeToJob(@AuthenticationPrincipal MyUserDetails user, @PathVariable(value = "id")  Long id, Model model) {
+        User userStaff = this.myUserDetailsService.getUserByUsername(user.getUsername()).orElseThrow(() -> new IllegalArgumentException("пользователь не найден"));
+        Staff staff = this.staffService.getStaffByUser(userStaff);
+        this.incidentService.takeToJob(id, staff);
         List<Incident> incidentsList = this.incidentService.getIncidentsList();
         model.addAttribute("incidents", incidentsList);
         return "incidents";
