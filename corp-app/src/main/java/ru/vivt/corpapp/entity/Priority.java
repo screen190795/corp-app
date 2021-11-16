@@ -1,7 +1,7 @@
 package ru.vivt.corpapp.entity;
 
 public enum Priority {
-    HIGEST("Блокирующий"),
+    HIGHEST("Блокирующий"),
     HIGH("Высокий"),
     MEDIUM("Средний"),
     LOW("Низкий");
